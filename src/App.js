@@ -70,6 +70,7 @@ class App extends Component {
                 <NoteListMain
                 {...routeProps}
                 notes={notesForFolder}
+                folders={folders}
                 />
               );
             }}
