@@ -16,14 +16,18 @@ export default class NoteListMain extends Component {
   }
   
   static contextType =  notefulContext
-
+  
+  
   render() {
     
-    const { folderId } = this.props.match.params
-    const { notes=[] } = this.context
-    const { notesForFolder } = getNotesForFolder(notes, folderId)
-
+    const { folderId } = this.props.match.params;
+    const { notes=[] } = this.context;
+    const notesForFolder = getNotesForFolder(notes, parseInt(folderId));
+    
+    // console.log(notesForFolder);
+    
     return (
+      
       <section className='NoteListMain'>
         <ul>
           {notesForFolder.map(note =>
