@@ -73,6 +73,9 @@ class AddNote extends Component {
             }
             return response.json();
         })
+        .then(note => {
+            this.context.addNote(note)
+        })
         .catch(error => {
             console.error({error})
         });

@@ -44,6 +44,9 @@ class AddFolder extends Component {
             }
             return response.json();
         })
+        .then(folder => {
+            this.context.addFolder(folder)
+        })
         .catch(error => {
             console.error({error})
         });       

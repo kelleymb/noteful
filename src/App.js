@@ -19,6 +19,15 @@ class App extends Component {
       notes: []
     };
   
+  
+  addNote = (note) => {
+    this.setState({notes: [...this.state.notes, note]})
+  }
+
+  addFolder = (folder) => {
+    this.setState({folders: [...this.state.folders, folder]})
+  }
+
   componentDidMount() {
     Promise.all([
       fetch(`${config.API_ENDPOINT}/notes`),
@@ -90,6 +99,8 @@ class App extends Component {
       notes: this.state.notes,
       folders: this.state.folders,
       deleteNote: this.handleDeleteNote,
+      addNote: this.addNote,
+      addFolder: this.addFolder
     };
     return (
       <CheckError>
