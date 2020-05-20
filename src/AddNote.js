@@ -114,7 +114,8 @@ class AddNote extends Component {
                         className='folder-name'
                         name='folder'
                         id='folder'
-                        onChange={e => {this.updateFolder(e.target.value)}}></input>
+                        onChange={e => {this.updateFolder(e.target.value)}}>
+                    </input>
                     <ValidationError message={folderError}/>
                 </div>
                 <div className='button-group'>
