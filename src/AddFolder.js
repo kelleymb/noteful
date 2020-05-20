@@ -62,8 +62,8 @@ class AddFolder extends Component {
                         name='add-folder'
                         id='add-folder'
                         onChange={e => this.updateFolder(e.target.value)}>
-                        <ValidationError message={nameError}/>
                     </input>
+                    <ValidationError message={nameError}/>
                 </div>
                 <div className='button-group'>
                     <button 
