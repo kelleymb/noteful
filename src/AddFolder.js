@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NoteContext from './NoteContext';
 import ValidationError from './ValidationError';
 import config from './config';
-import './AddFolder.css'
+import './AddFolder.css';
 
 class AddFolder extends Component {
 
@@ -22,9 +22,9 @@ class AddFolder extends Component {
     validateFolder() {
         const folder = this.state.name.trim();
         if(folder.length === 0) {
-            return 'Please enter a Folder name.'
+            return 'Please enter a Folder name.';
         } else if (folder.length < 3) {
-            return 'Please enter a Folder name over three characters!'
+            return 'Please enter a Folder name over three characters!';
         }
     }
 
