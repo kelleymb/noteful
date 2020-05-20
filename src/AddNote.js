@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NoteContext from './NoteContext';
 import ValidationError from './ValidationError';
 import config from './config';
+import './AddNote.css';
 
 class AddNote extends Component {
 
@@ -86,7 +87,7 @@ class AddNote extends Component {
             <form className='add-note-form' onSubmit={e => {this.handleSubmit(e)}}>
                 <h2>Add Note</h2>
                 <div className='add-note-name-group'>
-                    <label htmlFor='add-note-name'>Note Name</label>
+                    <label htmlFor='add-note-name'>Note Name</label><br />
                     <input
                         type='text'
                         className='add-note-name'
@@ -97,7 +98,7 @@ class AddNote extends Component {
                     <ValidationError message={nameError}/>
                 </div>
                 <div className='add-note-content-group'>
-                    <label htmlFor='add-content'>Add content to note</label>
+                    <label htmlFor='add-content'>Add content to note</label><br />
                     <input
                         type='text'
                         className='add-content'
@@ -108,7 +109,7 @@ class AddNote extends Component {
                     <ValidationError message={contentError}/>
                 </div>
                 <div className='add-note-select-folder-group'>
-                    <label htmlFor='folder-name'>Folder Name</label>
+                    <label htmlFor='folder-name'>Folder Name</label><br />
                     <input 
                         type='text'
                         className='folder-name'
