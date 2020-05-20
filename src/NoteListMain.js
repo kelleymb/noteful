@@ -15,7 +15,7 @@ export default class NoteListMain extends Component {
     }
   }
   
-  static contextType =  notefulContext
+  static contextType =  notefulContext;
   
   
   render() {
@@ -23,8 +23,6 @@ export default class NoteListMain extends Component {
     const { folderId } = this.props.match.params;
     const { notes=[] } = this.context;
     const notesForFolder = getNotesForFolder(notes, parseInt(folderId));
-    
-    // console.log(notesForFolder);
     
     return (
       
