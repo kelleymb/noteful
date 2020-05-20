@@ -1,0 +1,20 @@
+.add-folder-form {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.add-folder {
+    margin: 10px;
+}
+
+.new-folder-button, .cancel-button {
+    margin: 10px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.new-folder-button:hover, .cancel-button:hover {
+    color: purple;
+    font-size: 18px;
+}
+
