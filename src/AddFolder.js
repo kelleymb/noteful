@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NoteContext from './NoteContext';
 import ValidationError from './ValidationError';
 import config from './config';
+import CheckError from './CheckError';
 import './AddFolder.css';
 
 class AddFolder extends Component {
@@ -56,6 +57,7 @@ class AddFolder extends Component {
         const nameError = this.validateFolder();
 
         return (
+            <CheckError>
             <form className='add-folder-form' onSubmit={e => this.handleSubmit(e)}>
                 <h2>Add a Folder</h2>
                 <div className='add-folder-form-group'>
@@ -70,12 +72,6 @@ class AddFolder extends Component {
                     <ValidationError message={nameError}/>
                 </div>
                 <div className='button-group'>
-                    <button 
-                        type='reset' 
-                        className='cancel-button'
-                    >
-                    Cancel
-                    </button>
                     <button
                         type='submit'
                         className='new-folder-button'
@@ -84,8 +80,8 @@ class AddFolder extends Component {
                     Submit
                     </button> 
                 </div>
-                
-            </form>
+            </form>    
+            </CheckError>
         );
     }
 }

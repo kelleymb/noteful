@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NoteContext from './NoteContext';
 import ValidationError from './ValidationError';
 import config from './config';
+import CheckError from './CheckError';
 import './AddNote.css';
 
 class AddNote extends Component {
@@ -39,13 +40,10 @@ class AddNote extends Component {
         }
     }
 
-    validateFolder() {
-        const folder = this.context.folders.name;
-        if(folder === folder) {
-            return folder;
-        } else if (folder !== folder) {
-            return 'Folder selection is invalid. Please try again';
-        }
+    validateFolder(name) {
+        if(this.context.folders.find((folder) => folder.name === name) === undefined) {
+            return 'Folder selection is invalid. Please try again.';
+        }; 
     }
 
     validateContent() {
@@ -86,7 +84,11 @@ class AddNote extends Component {
         const folderError = this.validateFolder();
         const contentError = this.validateContent();
 
+        const { folders = [] } = this.context;
+
+
         return (
+            <CheckError>
             <form className='add-note-form' onSubmit={e => {this.handleSubmit(e)}}>
                 <h2>Add Note</h2>
                 <div className='add-note-name-group'>
@@ -112,23 +114,17 @@ class AddNote extends Component {
                     <ValidationError message={contentError}/>
                 </div>
                 <div className='add-note-select-folder-group'>
-                    <label htmlFor='folder-name'>Folder Name</label><br />
-                    <input 
-                        type='text'
-                        className='folder-name'
-                        name='folder'
+                    <label htmlFor='select-folder'>Select a folder</label><br />
+                    <select 
                         id='folder'
+                        name='folder'
                         onChange={e => {this.updateFolder(e.target.value)}}>
-                    </input>
+                        <option value='None'>Select one...</option>
+                        {folders.map(folder => folder.name)}
+                    </select>
                     <ValidationError message={folderError}/>
                 </div>
                 <div className='button-group'>
-                    <button 
-                        type='reset' 
-                        className='cancel-button'
-                    >
-                    Cancel
-                    </button>
                     <button
                         type='submit'
                         className='submit-button'
@@ -142,6 +138,7 @@ class AddNote extends Component {
                     </button>
                 </div>
             </form>
+            </CheckError>
         );
     }
 }
