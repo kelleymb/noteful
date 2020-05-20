@@ -39,7 +39,7 @@ class AddNote extends Component {
     }
 
     validateFolder() {
-        const folder = this.context.folders.name.trim();
+        const folder = this.context.folders.name;
         if(folder === folder) {
             return folder;
         } else if (folder !== folder) {
