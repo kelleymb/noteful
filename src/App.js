@@ -9,6 +9,7 @@ import notefulContext from './notefulContext';
 import AddFolder from './AddFolder';
 import AddNote from './AddNote';
 import config from './config';
+import CheckError from './CheckError';
 import './App.css';
 
 class App extends Component {
@@ -47,6 +48,7 @@ class App extends Component {
 
   renderNavRoutes() {
     return (
+      <CheckError>
       <>
         {['/', '/folder/:folderId'].map(path => (
           <Route
@@ -60,11 +62,13 @@ class App extends Component {
         <Route path='/add-folder' component={AddFolder} />
         <Route path='/add-note' component={AddNote} />
       </>
+      </CheckError>
     );
   }
 
   renderMainRoutes() {
     return (
+      <CheckError>
       <>
         {['/', '/folder/:folderId'].map(path => (
           <Route
@@ -76,6 +80,7 @@ class App extends Component {
         ))}
         <Route path='/note/:noteId' component={NotePageMain}/>
       </>
+      </CheckError>
     );
   }
 
@@ -87,6 +92,7 @@ class App extends Component {
       deleteNote: this.handleDeleteNote,
     };
     return (
+      <CheckError>
       <notefulContext.Provider value={contextValue}>
         <div className="App">
           <nav className="App__nav">{this.renderNavRoutes()}</nav>
@@ -99,6 +105,7 @@ class App extends Component {
           <main className="App__main">{this.renderMainRoutes()}</main>
         </div>  
       </notefulContext.Provider>
+      </CheckError>
     );
   }
 }
