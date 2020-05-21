@@ -89,6 +89,10 @@ class AddFolder extends Component {
     }
 }
 
+AddFolder.defaultProps = {
+    name: ''
+}
+
 AddFolder.propTypes = {
     name: PropTypes.string.isRequired,
 }

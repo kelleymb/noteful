@@ -153,6 +153,13 @@ class AddNote extends Component {
     }
 }
 
+AddNote.defaultProps = {
+    noteName: '',
+    noteContent: '',
+    folder: '',
+    folderId: ''
+}
+
 AddNote.propTypes = {
     noteName: PropTypes.string.isRequired,
     noteContent: PropTypes.string.isRequired,

@@ -72,7 +72,7 @@ class Note extends Component {
 }
  
 Note.propTypes = {
-    onDeleteNote: PropTypes.func.isRequired
+    onDeleteNote: PropTypes.func
 }
 
 export default Note;
