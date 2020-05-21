@@ -30,8 +30,10 @@ class AddFolder extends Component {
         }
     }
 
-    handleSubmit(e, name) {
+    handleSubmit(e) {
         e.preventDefault();
+
+        const name = this.state.name;
         
         fetch(`${config.API_ENDPOINT}/folders`, {
             method: 'POST',
@@ -55,7 +57,7 @@ class AddFolder extends Component {
     }
 
     render() {
-        const nameError = this.validateFolder();
+        const nameError = this.validateFolder(this.state.name);
 
         return (
             <CheckError>
@@ -76,7 +78,7 @@ class AddFolder extends Component {
                     <button
                         type='submit'
                         className='new-folder-button'
-                        disabled={this.validateFolder()}
+                        disabled={this.validateFolder(this.state.name)}
                     >
                     Submit
                     </button> 

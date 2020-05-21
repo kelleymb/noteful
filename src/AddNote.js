@@ -42,9 +42,9 @@ class AddNote extends Component {
     }
 
     validateFolder(name) {
-        // if(this.context.folders.find((folder) => folder.name === name) === undefined) {
-        //     return 'Folder selection is invalid. Please try again.';
-        // }; 
+        if(this.context.folders.find((folder) => folder.id === name) === undefined) {
+            return 'Folder selection is invalid. Please try again.';
+        }; 
         console.log(name);
     }
 
@@ -57,15 +57,24 @@ class AddNote extends Component {
         }
     }
 
-    handleSubmit(e, name, content, folderId, date) {
+    handleSubmit(e) {
         e.preventDefault();
+
+        const folderId = this.state.folder;
+        const content = this.state.noteContent;
+        const name = this.state.noteName;
 
         fetch(`${config.API_ENDPOINT}/notes`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({folderId: folderId}, {name: name}, {modified: date}, {content: content})
+            body: JSON.stringify({
+                folderId: folderId, 
+                name: name, 
+                modified: new Date(), 
+                content: content
+            })
         })
         .then(response => {
             if(!response.ok) {
@@ -82,9 +91,9 @@ class AddNote extends Component {
     }
 
     render() {
-        const nameError = this.validateNoteName();
-        const folderError = this.validateFolder();
-        const contentError = this.validateContent();
+        const nameError = this.validateNoteName(this.state.noteName);
+        const folderError = this.validateFolder(this.state.folder);
+        const contentError = this.validateContent(this.state.noteContent);
 
         const { folders = [] } = this.context;
 
@@ -130,9 +139,9 @@ class AddNote extends Component {
                         type='submit'
                         className='submit-button'
                         disabled={
-                            this.validateNoteName() ||
-                            this.validateFolder() ||
-                            this.validateContent()
+                            this.validateNoteName(this.state.noteName) ||
+                            this.validateFolder(this.state.folder) ||
+                            this.validateContent(this.state.noteContent)
                         }
                     >
                     Submit
