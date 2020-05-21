@@ -42,10 +42,13 @@ class NotePageMain extends Component {
   }
 }
 
-NotePageMain.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({}).isRequired,
-  }).isRequired
-}
+PropTypes.shape({
+  match: PropTypes.object
+})
+// NotePageMain.propTypes = {
+//   match: PropTypes.shape({
+//     params: PropTypes.shape({}).isRequired,
+//   }).isRequired
+// }
 
 export default NotePageMain;

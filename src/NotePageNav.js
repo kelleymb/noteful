@@ -49,13 +49,17 @@ class NotePageNav extends Component {
   }  
 }
 
-NotePageNav.propTypes = {
-  history: PropTypes.shape({
-    goBack: PropTypes.shape( () => {} ).isRequired
-  }),
-  match: PropTypes.shape({
-    params: PropTypes.shape({}).isRequired,
-  }).isRequired
-}
+  PropTypes.shape({
+    history: PropTypes.func,
+    match: PropTypes.object
+  })
+  // NotePageNav.propTypes = {
+  // history: PropTypes.shape({
+  //   goBack: PropTypes.shape( () => {} ).isRequired
+  // }),
+  // match: PropTypes.shape({
+  //   params: PropTypes.shape({}).isRequired,
+  // }).isRequired
+// }
 
 export default NotePageNav;
