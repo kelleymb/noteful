@@ -5,9 +5,10 @@ import Note from './Note'
 import CircleButton from './CircleButton'
 import { getNotesForFolder } from './notes-helpers'
 import notefulContext from './notefulContext'
+import PropTypes from 'prop-types'
 import './NoteListMain.css'
 
-export default class NoteListMain extends Component {
+class NoteListMain extends Component {
   
   static defaultProps = {
     match: {
@@ -54,3 +55,9 @@ export default class NoteListMain extends Component {
     );
   } 
 }
+
+NoteListMain.propTypes = {
+    
+}
+
+export default NoteListMain;

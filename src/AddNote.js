@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import NoteContext from './NoteContext';
+import notefulContext from './notefulContext';
 import ValidationError from './ValidationError';
 import config from './config';
 import CheckError from './CheckError';
 import './AddNote.css';
+import PropTypes from 'prop-types';
 
 class AddNote extends Component {
 
@@ -17,7 +18,7 @@ class AddNote extends Component {
         };
     }
 
-    static contextType = NoteContext;
+    static contextType = notefulContext;
 
     updateNoteName(name) {
         this.setState({noteName: name}, () => {this.validateNoteName(name)})
@@ -41,9 +42,10 @@ class AddNote extends Component {
     }
 
     validateFolder(name) {
-        if(this.context.folders.find((folder) => folder.name === name) === undefined) {
-            return 'Folder selection is invalid. Please try again.';
-        }; 
+        // if(this.context.folders.find((folder) => folder.name === name) === undefined) {
+        //     return 'Folder selection is invalid. Please try again.';
+        // }; 
+        console.log(name);
     }
 
     validateContent() {
@@ -119,8 +121,7 @@ class AddNote extends Component {
                         id='folder'
                         name='folder'
                         onChange={e => {this.updateFolder(e.target.value)}}>
-                        <option value='None'>Select one...</option>
-                        {folders.map(folder => folder.name)}
+                        {folders.map(folder => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
                     </select>
                     <ValidationError message={folderError}/>
                 </div>
@@ -141,6 +142,13 @@ class AddNote extends Component {
             </CheckError>
         );
     }
+}
+
+AddNote.propTypes = {
+    noteName: PropTypes.string.isRequired,
+    noteContent: PropTypes.string.isRequired,
+    folder: PropTypes.string.isRequired,
+    folderId: PropTypes.string
 }
 
 export default AddNote;

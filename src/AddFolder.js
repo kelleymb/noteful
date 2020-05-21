@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import NoteContext from './NoteContext';
+import notefulContext from './notefulContext';
 import ValidationError from './ValidationError';
 import config from './config';
 import CheckError from './CheckError';
+import PropTypes from 'prop-types';
 import './AddFolder.css';
 
 class AddFolder extends Component {
@@ -14,7 +15,7 @@ class AddFolder extends Component {
         };
     }
 
-    static contextType = NoteContext;
+    static contextType = notefulContext;
 
     updateFolder(name) {
         this.setState( {name: name}, () => this.validateFolder(name) )
@@ -84,6 +85,10 @@ class AddFolder extends Component {
             </CheckError>
         );
     }
+}
+
+AddFolder.propTypes = {
+    name: PropTypes.string.isRequired,
 }
 
 export default AddFolder;

@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CircleButton from './CircleButton'
 import notefulContext from './notefulContext'
 import { findNote, findFolder } from './notes-helpers'
+import PropTypes from 'prop-types'
 import './NotePageNav.css'
 
-export default class NotePageNav extends Component {
+class NotePageNav extends Component {
   
   static defaultProps = {
     history: {
@@ -47,3 +48,9 @@ export default class NotePageNav extends Component {
     )
   }  
 }
+
+NotePageNav.propTypes = {
+
+}
+
+export default NotePageNav;

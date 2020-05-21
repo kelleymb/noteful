@@ -2,9 +2,10 @@ import React, { Component }from 'react'
 import Note from './Note'
 import notefulContext from './notefulContext'
 import { findNote } from './notes-helpers'
+import PropTypes from 'prop-types'
 import './NotePageMain.css'
 
-export default class NotePageMain extends Component {
+class NotePageMain extends Component {
   
   static defaultProps ={
     match: {
@@ -14,7 +15,7 @@ export default class NotePageMain extends Component {
 
   static contextType = notefulContext;
 
-  handleDelteNote = noteId => {
+  handleDeleteNote = noteId => {
     this.props.history.push('/')
   }
 
@@ -29,7 +30,7 @@ export default class NotePageMain extends Component {
           id={note.id}
           name={note.name}
           modified={note.modified}
-          onDeleteNote={this.handleDelteNote}
+          onDeleteNote={this.handleDeleteNote}
         />
         <div className='NotePageMain__content'>
           {note.content.split(/\n \r|\n/).map((para, i) =>
@@ -40,3 +41,9 @@ export default class NotePageMain extends Component {
     )
   }
 }
+
+NotePageMain.propTypes = {
+
+}
+
+export default NotePageMain;
